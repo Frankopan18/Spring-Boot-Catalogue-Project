@@ -22,11 +22,17 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
-		String password = req.getParameter("password");
+		System.out.println(username);
+		int password = Integer.parseInt(req.getParameter("password"));
+		System.out.println(password);
 		NormalUser user = DAOProvider.getDAO().getUserByUsername(username);
+		System.out.println(user.toString());
 		req.getSession().setAttribute("current.user.username", user.getUsername());
 		req.getSession().setAttribute("current.user.mail", user.getPassword());
-		if (password.hashCode() == user.getPassword()) {
+		System.out.println(password);
+		System.out.println(user.getPassword());
+		if (password == user.getPassword()) {
+			System.out.println("Im here");
 			String contextPath = req.getContextPath();
 			resp.sendRedirect(contextPath + "/articles.jsp");
 			return;

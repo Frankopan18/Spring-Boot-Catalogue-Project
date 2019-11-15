@@ -114,8 +114,8 @@ div.wrapper {
 </head>
 </head>
 <body>
-	<sql:setDataSource var="myDatabase" driver="org.postgresql.Driver"
-		url="jdbc:postgresql://localhost:5432/mydb" user="postgres"
+	<sql:setDataSource var="myDatabase" driver="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://127.0.0.1/mydb?useUnicode=true&characterEncoding=utf8&useTimezone=True&serverTimezone=UTC" user="root"
 		password="test" />
 
 	<sql:query var="listOfArticles" dataSource="${myDatabase}">
